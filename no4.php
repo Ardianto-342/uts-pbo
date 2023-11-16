@@ -1,26 +1,18 @@
-#include <iostream>
-#include <stdexcept>
+<?php
 
-int main() {
-    try {
-        int pembilang, penyebut, hasil;
+try {
+    $pembilang = readline("Masukkan pembilang: ");
+    $penyebut = readline("Masukkan penyebut: ");
 
-        std::cout << "Masukkan pembilang: ";
-        std::cin >> pembilang;
-
-        std::cout << "Masukkan penyebut: ";
-        std::cin >> penyebut;
-
-        if (penyebut == 0) {
-            throw std::runtime_error("Error: Pembagian dengan nol tidak diizinkan.");
-        }
-
-        hasil = pembilang / penyebut;
-
-        std::cout << "Hasil pembagian: " << hasil << std::endl;
-    } catch (const std::exception& e) {
-        std::cerr << "Exception: " << e.what() << std::endl;
+    if ($penyebut == 0) {
+        throw new RuntimeException("Error: Pembagian dengan nol tidak diizinkan.");
     }
 
-    return 0;
+    $hasil = $pembilang / $penyebut;
+
+    echo "Hasil pembagian: " . $hasil . PHP_EOL;
+} catch (Exception $e) {
+    echo "Exception: " . $e->getMessage() . PHP_EOL;
 }
+
+?>
